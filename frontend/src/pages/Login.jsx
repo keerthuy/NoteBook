@@ -2,13 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/ContextProvider'
 
 const Login = () => {
 
 const [email,setEmail] = useState('')
 const [password,setPassword] = useState('')
 const navigate = useNavigate()
-
+const {login} = useAuth()
 
 const handleSubmit =  async (e) => {
    e.preventDefault()
@@ -19,6 +20,7 @@ const handleSubmit =  async (e) => {
     );
 
     if(response.data.success){
+      login(response.data.user)
         localStorage.setItem("token",response.data.token)
        navigate('/')
     }
@@ -49,7 +51,7 @@ const handleSubmit =  async (e) => {
     <button
     type = "submit"
     className='w-full bg-teal-600 text-white py-2'
-    >Signup</button>  
+    > Login </button>  
     <p className='text-center'>
         Don't Have Account? <Link to="/register">Register</Link>
     </p>
