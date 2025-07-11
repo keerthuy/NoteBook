@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+
+
+
 const Modal = ({closeModal,addNote}) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -8,7 +11,6 @@ const Modal = ({closeModal,addNote}) => {
  const handleSubmit = async (e) => {
     e.preventDefault();
    addNote(title,description)
-
   };
 
 

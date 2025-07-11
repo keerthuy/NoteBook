@@ -4,12 +4,12 @@
      title:{
         type:String, required :true
      },
-     decription :{
+     description :{
         type:String,
         required:true
      },
      userId:{
-        type:mongoose.Schema.Types.ObjectId,ref:'user'
+        type:mongoose.Schema.Types.ObjectId, ref : 'User'
      },
  })
 
