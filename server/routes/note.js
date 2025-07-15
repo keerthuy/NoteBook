@@ -29,7 +29,7 @@ await newNote.save();
     }
 })
 
-router.get('/' , async (res,req) => {
+router.get('/' , async (req,res) => {
 try{
 
 const notes = await Note.find()
@@ -37,13 +37,34 @@ return res.status(200) .json({ success : true,notes})
 
 
 }
-catch{
+catch(error){
 
   return res.status(500) .json({success:false,message:"cant retrive notes"})
 }
+})
+
+
+router.put('/',async (req,res) =>{
+  try{
+   const {id} = req.params;
+  const updateNote = await Note.findByIdAndUpdate(id,req.body)
+  return res.status(200).json({success:true,updateNote})
+  } catch(error){
+    return res.status(500).json({ success:false,message:"can't update notes"})
+  }
+})
+
+
+router.delete('/',async (req,res) =>{
+  try{
+   const {id} = req.params;
+  const updateNote = await Note.findByIdAndDelete(id)
+  return res.status(200).json({success:true,updateNote})
+  } catch(error){
+    return res.status(500).json({ success:false,message:"can't delete notes"})
+  }
+})
 
 
 
-}
-)
 export default router;
