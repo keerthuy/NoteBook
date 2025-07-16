@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
 
 
 
-const Modal = ({closeModal,addNote,currentNote, eidtNote}) => {
+const Modal = ({closeModal,addNote,currentNote, editNote}) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
- useEffect{() => {
+ useEffect(() => {
    if(currentNote){
-    setTitle{currentNote.title}
-    setDescription{currentNotes.description}
+
+    setTitle(currentNote.title)
+    setDescription(currentNote.description)
    }
     
-}, [currentNote]}
+}, [currentNote])
 
 
  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (currentNote){
-        eidtNote(currentNote._id,title,description)
+        editNote(currentNote._id,title,description)
     }else{
        addNote(title,description)
     }
@@ -48,14 +48,17 @@ const Modal = ({closeModal,addNote,currentNote, eidtNote}) => {
             rows={4}
           />
           <div className='flex justify-between'>
+
             <button type='submit' className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition'>
            {currentNote ? "update Note" : "Add note"}
             </button>
+
             <button type='button' className='text-red-500 px-4 py-2 rounded hover:bg-red-100 transition'
             onClick={closeModal}
             >
               Cancel
             </button>
+
           </div>
         </form>
       </div>
