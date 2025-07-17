@@ -32,51 +32,51 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="border shadow p-6 w-80 bg-white">
-        <h2 className="text-2xl font-bold mb-4">Signup</h2>
-        <form onSubmit={handleSubmit}>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-blue-100 via-white to-teal-100">
+      <div className="border-0 shadow-2xl p-8 w-96 bg-white rounded-2xl flex flex-col items-center">
+        <h2 className="text-3xl font-extrabold mb-6 text-teal-700 tracking-wide drop-shadow">Signup</h2>
+        <form onSubmit={handleSubmit} className="w-full">
           {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-          <div className="mb-4">
-            <label className="block text-gray-700">Name</label>
+          <div className="mb-5">
+            <label className="block text-gray-700 mb-1 font-medium">Name</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full px-3 py-2 border"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
               placeholder="Enter your name"
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Email</label>
+          <div className="mb-5">
+            <label className="block text-gray-700 mb-1 font-medium">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
               placeholder="Enter your email"
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Password</label>
+          <div className="mb-6">
+            <label className="block text-gray-700 mb-1 font-medium">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border"
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-400 transition"
               placeholder="******"
               required
             />
           </div>
           <div className="mb-4">
-            <button type="submit" className="w-full bg-teal-600 text-white py-2">
+            <button type="submit" className="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded font-semibold shadow transition-all duration-150 active:scale-95">
               Signup
             </button>
-            <p className="text-center mt-2">
+            <p className="text-center mt-3 text-gray-600">
               Already have an account?{' '}
-              <Link to="/login" className="text-blue-600">
+              <Link to="/login" className="text-blue-600 hover:underline font-medium">
                 Login
               </Link>
             </p>

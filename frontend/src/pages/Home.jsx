@@ -115,40 +115,55 @@ const Home = () => {
     }
   };
 
-  return (
-    <div className="bg-gray-100 min-h-screen">
-      <Navbar setQuery={setQuery} /> {/* ❗ Typo in prop name? Maybe should be setQuery */}
+return (
+  <div className="bg-blue-100 min-h-screen pb-10">
+    <Navbar setQuery={setQuery} />
 
-      <div className="px-8 pt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {filteredNotes.length > 0 ? (
-          filteredNotes.map((note) => (
-            <NoteCard key={note._id} 
-            note={note} 
-            onEdit={onEdit} 
-            deleteNote={deleteNote} />
-          ))
-        ) : (
-          <p>No notes</p> // ❗ `<P>` changed to valid lowercase `<p>`
-        )}
-      </div>
+    <div className="text-center pt-6">
+      <h1 className="text-3xl font-bold text-gray-800">Your Notes</h1>
+      <p className="text-gray-500 text-sm mt-1">Manage and organize your thoughts efficiently</p>
+    </div>
 
-      <button
-        onClick={() => setModalopen(true)}
-        className="fixed right-6 bottom-6 w-14 h-14 flex items-center justify-center text-3xl bg-teal-500 text-white font-bold rounded-full shadow-lg hover:bg-teal-600 transition-all duration-200"
-      >
-        <span className="pb-1">+</span>
-      </button>
-
-      {isModalOpen && (
-        <Modal
-          closeModal={closeModal}
-          addNote={addNote}
-          currentNote={currentNote}
-          editNote={editNote} // ❗ Fixed prop name to match corrected function
-        />
+    <div className="px-8 pt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 transition-all duration-300 ease-in-out">
+      {filteredNotes.length > 0 ? (
+        filteredNotes.map((note) => (
+          <NoteCard
+            key={note._id}
+            note={note}
+            onEdit={onEdit}
+            deleteNote={deleteNote}
+          />
+        ))
+      ) : (
+        <div className="col-span-full text-center text-gray-500 mt-12">
+          <img
+            src="https://www.svgrepo.com/show/452030/empty-box.svg"
+            alt="No Notes"
+            className="w-24 mx-auto opacity-70 mb-4"
+          />
+          <p className="text-lg font-medium">No notes found. Try adding one!</p>
+        </div>
       )}
     </div>
-  );
+
+    <button
+      onClick={() => setModalopen(true)}
+      className="fixed right-6 bottom-6 w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl shadow-xl hover:bg-teal-600 active:scale-95 transition-all duration-200"
+    >
+      <span className="pb-1">+</span>
+    </button>
+
+    {isModalOpen && (
+      <Modal
+        closeModal={closeModal}
+        addNote={addNote}
+        currentNote={currentNote}
+        editNote={editNote}
+      />
+    )}
+  </div>
+);
+
 };
 
 export default Home;

@@ -8,7 +8,7 @@ export const Navbar = ({setQuery}) => {
 
 
     return (
-        <nav className="bg-gray-800 p-4 text-white flex justify-between items-center">
+        <nav className="bg-gradient-to-r from-teal-500 via-blue-500 to-purple-600 p-4 text-white flex justify-between items-center shadow-lg">
             <div className="text-xl font-bold">
                 <Link to="/">NoteApp</Link>
             </div>
